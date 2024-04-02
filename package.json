@@ -16,7 +16,6 @@
     "test:ts": "vitest run",
     "format": "prettier --write \"src/**/*.{json,js,jsx,ts,tsx,css,scss}\" \"backend/**/*.mo\"",
     "prepare": "husky install",
-    "precommit": "lint-staged",
     "sources": "mops sources",
     "postinstall": "mops install"
   },

@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        background: '#533398',
+        background: '#000008',
         primary: '#83c9f4',
         // upvote: '#F15A24',
       },
