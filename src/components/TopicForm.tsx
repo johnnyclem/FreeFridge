@@ -47,7 +47,7 @@ export default function TopicForm({ initial, onSubmit }: TopicFormProps) {
   const tags = useTopicStore((state) => state.tags);
 
   const isValid = () => {
-    return info.title.length > 1;
+    return info.description.length > 1;
   };
 
   const patch = (partialInfo: Partial<TopicInfo>) =>
@@ -67,100 +67,13 @@ export default function TopicForm({ initial, onSubmit }: TopicFormProps) {
       }}
     >
       <label>
-        Title
-        <input
-          type="text"
-          value={info.title}
-          onChange={(e) => patch({ title: e.target.value })}
-        />
-      </label>
-      <label>
-        Brief description
+        Your note:
         <textarea
           tw="mb-0"
           rows={5}
           value={info.description}
           onChange={(e) => patch({ description: e.target.value })}
         />
-      </label>
-      <label>
-        Links
-        {!info.links.some((link) => link.startsWith(developerForumBaseUrl)) && (
-          <div>
-            Please include a new or existing{' '}
-            <a
-              href={developerForumBaseUrl}
-              target="_blank"
-              rel="noreferrer"
-              tw="whitespace-nowrap"
-            >
-              developer forum topic
-            </a>
-            .
-          </div>
-        )}
-        <div tw="flex flex-col gap-2">
-          {[...info.links, ''].map((link, i) => (
-            <div key={i}>
-              <input
-                type="text"
-                placeholder="Paste URL here"
-                value={link}
-                onChange={(e) => {
-                  const newLink = e.target.value;
-                  const newLinks = [...info.links];
-                  if (newLink) {
-                    newLinks[i] = newLink;
-                  } else {
-                    newLinks.splice(i, 1);
-                  }
-                  patch({
-                    links: newLinks,
-                  });
-                }}
-              />
-            </div>
-          ))}
-        </div>
-      </label>
-      <label>
-        Tags
-        <div tw="flex flex-col gap-2">
-          <CreatableSelect
-            tw="w-full"
-            styles={{
-              multiValue: (styles) => ({
-                ...styles,
-                ...tw`rounded-2xl px-1`,
-                background: defaultTagColor,
-              }),
-              multiValueRemove: (styles) => ({
-                ...styles,
-                ...tw`rounded-xl hover:bg-[#0001]`,
-              }),
-              control: (styles) => ({
-                ...styles,
-                ...tw`rounded-lg border-2 border-[rgba(0,0,0,.1)]`,
-              }),
-              placeholder: (styles) => ({
-                ...styles,
-                color: '#0005',
-              }),
-            }}
-            value={info.tags.map((tag) => ({ label: tag, value: tag }))}
-            isMulti={true}
-            isClearable={false}
-            options={tags.map((tag) => ({
-              label: tag.name,
-              value: tag.name,
-            }))}
-            onChange={(newTags) => {
-              patch({
-                tags: newTags.map((tag) => tag.value),
-              });
-            }}
-          />
-        </div>
       </label>
       <button
         tw="mt-5 w-full px-8 py-3 border-2 bg-[#fff8] border-primary text-primary hover:bg-primary hover:text-white font-bold text-xl rounded-xl"

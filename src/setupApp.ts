@@ -2,7 +2,7 @@ import { Actor } from '@dfinity/agent';
 import { backend } from './declarations/backend';
 import { getNetwork } from './utils/network';
 
-export const applicationName = 'ICP Developer Feedback';
+export const applicationName = 'Free Fridge';
 
 // Redirect to custom domain
 if (

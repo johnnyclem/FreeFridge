@@ -130,47 +130,6 @@ export default function ChartArea({ events }: ChartsAreaProps) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div tw="h-[200px] sm:h-[300px]">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart width={500} height={300} data={data}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="Name" />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              {!!filterStates.Open && (
-                <Bar dataKey="Open" stackId="a" fill="#ffc145" />
-              )}
-              {!!filterStates.Next && (
-                <Bar dataKey="Next" stackId="a" fill="#8884d8" />
-              )}
-              {!!filterStates.Completed && (
-                <Bar dataKey="Completed" stackId="a" fill="#02ca9d" />
-              )}
-              {!!filterStates.Closed && (
-                <Bar dataKey="Closed" stackId="a" fill="#297373" />
-              )}
-            </BarChart>
-          </ResponsiveContainer>
-        </div>
-      </div>
-      <div tw="mt-5 flex justify-between sm:justify-center font-semibold sm:gap-4 text-white">
-        {(['Open', 'Next', 'Completed', 'Closed'] as const).map((status) => (
-          <label key={status} tw="select-none cursor-pointer whitespace-nowrap">
-            <input
-              tw="mr-2"
-              type="checkbox"
-              checked={!!filterStates[status]}
-              onChange={() =>
-                setFilterStates({
-                  ...filterStates,
-                  [status]: !filterStates[status],
-                })
-              }
-            />
-            {status}
-          </label>
-        ))}
       </div>
     </>
   );

@@ -13,7 +13,6 @@ export interface LoginAreaProps {
 
 export default function LoginArea({ label }: LoginAreaProps) {
   const loginII = useIdentityStore((state) => state.loginInternetIdentity);
-  const loginNFID = useIdentityStore((state) => state.loginNFID);
 
   const wrapLogin = (promise: Promise<any>) => {
     return handlePromise(
@@ -26,23 +25,12 @@ export default function LoginArea({ label }: LoginAreaProps) {
 
   return (
     <div tw="flex gap-1 items-center">
-      <span tw="mr-3 font-semibold opacity-70 text-lg cursor-default">
-        Sign in:
-      </span>
       <Tooltip content="Internet Identity">
         <LoginAreaButton
           onClick={() => wrapLogin(loginII())}
-          tw="p-1 flex items-center justify-center w-[48px] h-[48px]"
+          tw="flex items-center justify-center w-[48px] h-[48px]"
         >
-          <img src={astronautLogo} alt="Internet Identity" />
-        </LoginAreaButton>
-      </Tooltip>
-      <Tooltip content="NFID Login">
-        <LoginAreaButton
-          tw="flex gap-1 items-center justify-center w-[80px] h-[48px]"
-          onClick={() => wrapLogin(loginNFID())}
-        >
-          <img src={nfidLogo} alt="NFID" />
+            Login
         </LoginAreaButton>
       </Tooltip>
     </div>

@@ -22,7 +22,7 @@ module {
   public module Topic {
 
     public func isTitle(t : Text) : Bool {
-      t.size() > 0 and t.size() < 1000
+      return true;
     };
 
     public func isDescription(t : Text) : Bool {
